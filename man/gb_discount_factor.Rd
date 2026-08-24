@@ -35,9 +35,11 @@ gb_discount_factor(0:5)
 gb_discount_factor(c(0, 30, 31, 75, 76))
 }
 \references{
-HM Treasury (2022). The Green Book, Annex A6.
+HM Treasury (2026). The Green Book, chapter 6 (Shortlist
+appraisal), section on discounting.
 
-HM Treasury (2003). Green Book Supplementary Guidance: Discounting.
+HM Treasury. Supplementary Green Book Guidance: Discounting.
+\url{https://www.gov.uk/government/publications/green-book-supplementary-guidance-discounting}
 }
 \seealso{
 \code{\link[=gb_stpr]{gb_stpr()}}, \code{\link[=gb_npv]{gb_npv()}}, \code{\link[=gb_eanc]{gb_eanc()}}.

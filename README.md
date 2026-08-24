@@ -1,10 +1,6 @@
 # greenbook
 
-<!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/greenbook)](https://CRAN.R-project.org/package=greenbook)
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-<!-- badges: end -->
+[![CRAN status](https://www.r-pkg.org/badges/version/greenbook)](https://CRAN.R-project.org/package=greenbook) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/greenbook)](https://cran.r-project.org/package=greenbook) [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/greenbook)](https://CRAN.R-project.org/package=greenbook) [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Cost-benefit analysis primitives from the HM Treasury Green Book, in R.
 
@@ -134,21 +130,38 @@ Every parameter table is sourced from a published HMT, DfT, or DESNZ workbook. `
 
 `data-raw/` contains the refresh scripts: each downloads the published workbook, parses the relevant sheet, and rewrites the bundled CSV.
 
+## Discount rate review (2026)
+
+The independent [Green Book Discount Rate Review](https://www.gov.uk/government/publications/green-book-discount-rate-review-2026) (Freeman and Groom, published 30 June 2026) recommends lowering the standard rate from 3.5 to 3.0 percent, flattening the declining schedule, and retiring the separate 1.5 percent health rate. These are recommendations only: HM Treasury has said it will publish a formal response in due course, and the current STPR schedule remains in force until the Green Book and supplementary guidance are updated. `greenbook` therefore ships the current official schedule; if the recommendations are adopted, a new schedule will be added under a separate vintage alongside the existing one.
+
 ## Limitations
 
 - VPF series interpolates between published anchors at 2 percent real GDP per head growth (TAG's stated methodology). For sub-annual precision consult the TAG data book directly.
 - Bundled DESNZ carbon path covers 2020 to 2050. The November 2023 publication extends to 2100; the 2050-2100 portion will be added in a future refresh.
-- Long-horizon (50+ year) lower-rate sensitivity awaits the 2026 HMT discount-rate review.
 
 
 ## Source documents
 
 - [HM Treasury Green Book (2026)](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026)
 - [Supplementary Green Book Guidance: discounting](https://www.gov.uk/government/publications/green-book-supplementary-guidance-discounting)
+- [Green Book Discount Rate Review: Summary of Findings and Recommendations, June 2026](https://www.gov.uk/government/publications/green-book-discount-rate-review-2026)
 - [Supplementary Green Book Guidance: optimism bias](https://www.gov.uk/government/publications/green-book-supplementary-guidance-optimism-bias)
 - [Wellbeing Guidance for Appraisal: Supplementary Green Book Guidance, July 2021](https://www.gov.uk/government/publications/green-book-supplementary-guidance-wellbeing)
 - [DESNZ Valuation of Energy Use and GHG Emissions for Appraisal, November 2023](https://www.gov.uk/government/publications/valuation-of-energy-use-and-greenhouse-gas-emissions-for-appraisal)
 - [DfT Transport Analysis Guidance (TAG)](https://www.gov.uk/guidance/transport-analysis-guidance-tag)
+
+
+## Related packages
+
+| Package | Description |
+|---|---|
+| [`magentabook`](https://github.com/charlescoverdale/magentabook) | Companion: HM Treasury Magenta Book evaluation primitives (appraisal-to-evaluation spine) |
+| [`obr`](https://github.com/charlescoverdale/obr) | OBR fiscal forecasts (CBA inputs, public finances) |
+| [`ons`](https://github.com/charlescoverdale/ons) | UK Office for National Statistics data (GDP deflator, CPI, demography) |
+| [`inflateR`](https://github.com/charlescoverdale/inflateR) | Inflation adjustment for real-terms cashflows |
+| [`inflationkit`](https://github.com/charlescoverdale/inflationkit) | Inflation analysis (deflators, persistence) |
+| [`debtkit`](https://github.com/charlescoverdale/debtkit) | Debt sustainability analysis (links public-sector NPV to debt path) |
+| [`ivcheck`](https://github.com/charlescoverdale/ivcheck) | IV diagnostics (for causal impact estimates feeding the appraisal) |
 
 
 ## Citation
