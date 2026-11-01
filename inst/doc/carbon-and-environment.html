@@ -357,7 +357,7 @@ looks the values up directly:</p>
 <p>The values are published in 2022 prices. Rebase to a different year
 via <code>base_year</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">gb_carbon_value</span>(<span class="dv">2030</span>, <span class="at">base_year =</span> <span class="dv">2024</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 325.4126</span></span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 325.1436</span></span></code></pre></div>
 </div>
 <div id="net-present-value-of-an-emissions-path" class="section level2">
 <h2>Net present value of an emissions path</h2>
@@ -370,19 +370,19 @@ standard STPR.</p>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">gb_carbon_npv</span>(emissions, years, <span class="at">base_year =</span> <span class="dv">2024</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; ── Green Book appraisal ────────────────────────────────────────────────────────</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP -196.5k&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP -199.1k&quot;</span></span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; Horizon: 7 years (year 0 to 6)</span></span>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; Base year: 2024</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2022&quot;</span></span></code></pre></div>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2026-10&quot;</span></span></code></pre></div>
 <p>For an abatement project (avoided emissions), use
 <code>sign = &quot;benefit&quot;</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">gb_carbon_npv</span>(emissions, years, <span class="at">base_year =</span> <span class="dv">2024</span>, <span class="at">sign =</span> <span class="st">&quot;benefit&quot;</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; ── Green Book appraisal ────────────────────────────────────────────────────────</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP 196.5k&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP 199.1k&quot;</span></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; Horizon: 7 years (year 0 to 6)</span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; Base year: 2024</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2022&quot;</span></span></code></pre></div>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2026-10&quot;</span></span></code></pre></div>
 </div>
 <div id="wellbeing-valuation" class="section level2">
 <h2>Wellbeing valuation</h2>
@@ -395,7 +395,7 @@ WELLBY in 2019 prices.</p>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># In 2024 prices</span></span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">gb_wellby</span>(<span class="dv">1</span>, <span class="at">persons =</span> <span class="dv">100</span>, <span class="at">years =</span> <span class="dv">5</span>, <span class="at">base_year =</span> <span class="dv">2024</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; [1] 8013957</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; [1] 8012157</span></span>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># Sensitivity range</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="fu">gb_wellby</span>(<span class="dv">1</span>, <span class="at">persons =</span> <span class="dv">100</span>, <span class="at">years =</span> <span class="dv">5</span>, <span class="at">scenario =</span> <span class="st">&quot;low&quot;</span>)</span>
@@ -429,33 +429,33 @@ WELLBY in 2019 prices.</p>
 <span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; 6           vpf</span></span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 7          qaly</span></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; 8 carbon_values</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;                                                                                                                              source</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; 1                                                         HM Treasury Green Book 2022 Annex A6 / supplementary discounting guidance</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 2 HM Treasury, GDP deflators at market prices (December 2025 Quarterly National Accounts release, calendar-year series, 2024 = 100)</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 3                                                HM Treasury Supplementary Green Book Guidance: Optimism Bias (Mott MacDonald 2002)</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 4          HM Treasury Green Book 2018 and 2022 (the 2026 edition specifies no uplift; see chapter 6 Costs of raising public funds)</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; 5                                                                                  HMT Wellbeing Guidance for Appraisal (July 2021)</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; 6           DfT Transport Analysis Guidance (TAG) data book v2.03FC (December 2025), Table A4.1.1, WTP element for fatal casualties</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; 7                                                                      DHSC Supplementary Green Book Guidance + NICE HTA thresholds</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; 8                          DESNZ Valuation of Energy Use and GHG Emissions for Appraisal (November 2023), Data Tables 1-19, Table 3</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                    source</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; 1 HM Treasury Green Book supplementary guidance: discounting (updated 28 October 2026), paragraph 3.8; pre-October 2026 schedule from the 2003 Green Book</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 2                                     HM Treasury, GDP deflators at market prices, and money GDP: October 2026 (Budget), calendar-year series, 2025 = 100</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 3                                                                      HM Treasury Supplementary Green Book Guidance: Optimism Bias (Mott MacDonald 2002)</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 4                                HM Treasury Green Book 2018 and 2022 (the 2026 edition specifies no uplift; see chapter 6 Costs of raising public funds)</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; 5                                                                                                        HMT Wellbeing Guidance for Appraisal (July 2021)</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; 6                                 DfT Transport Analysis Guidance (TAG) data book v2.03FC (December 2025), Table A4.1.1, WTP element for fatal casualties</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; 7                                                                                            DHSC Supplementary Green Book Guidance + NICE HTA thresholds</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; 8                                                DESNZ Valuation of Energy Use and GHG Emissions for Appraisal (November 2023), Data Tables 1-19, Table 3</span></span>
 <span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt;   last_updated</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; 1   2026-04-26</span></span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; 2   2026-04-26</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; 1   2026-10-31</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; 2   2026-10-31</span></span>
 <span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt; 3   2026-04-26</span></span>
 <span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; 4   2026-04-26</span></span>
 <span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; 5   2026-04-26</span></span>
 <span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; 6   2026-04-26</span></span>
 <span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; 7   2026-04-26</span></span>
 <span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt; 8   2026-04-26</span></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                              notes</span></span>
-<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; 1                          Kinked STPR: 3.5/3.0/2.5/2.0/1.5/1.0 percent across bands at 30/75/125/200/300 years. Health and catastrophic-risk variants per supplementary guidance.</span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; 2 Outturn 1990-2024 from CGDP_Deflators_Qtrly_National_Accounts_December_2025_update.xlsx. Forecast years can be added via inflateR or the Spring Statement supplementary release.</span></span>
-<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; 3                                                                Indicative upper bounds for capex and duration uplift across six project categories. Values unchanged since 2003.</span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; 4                                                               Uplift on revenue raised through distortionary taxation. 20 percent in 2018 onwards (was 30 percent historically).</span></span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; 5                                                           WELLBY central value GBP 13000 in 2019 prices (low/central/high range). Convert to other base years via gb_deflator().</span></span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; 6                                               Anchor 2023 = GBP 2,474,341 (WTP component). Other years derived by 2 percent annual real GDP per head growth per TAG methodology.</span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; 7                                                            GBP 70k per QALY in 2024 prices for cross-government appraisal. NICE thresholds GBP 20k-30k retained for HTA context.</span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; 8                                     Single consolidated series (replacing historical traded / non-traded split). Low / central / high paths 2020-2050 in 2022 prices, GBP/tCO2e.</span></span></code></pre></div>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                                          notes</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; 1 Vintage 2026-10 (default): 3.00/2.50/2.25 percent for years 1-30/31-75/76-125, no discounting beyond year 125, no health or catastrophic variants. Vintage 2003: 3.5/3.0/2.5/2.0/1.5/1.0 percent with health and catastrophic-risk variants.</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; 2                                                                 Outturn 1990-2025 (ONS Quarterly National Accounts, 30 September 2026). Forecast 2026-2031 chained from OBR October 2026 EFO growth rates; type column marks forecast years.</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; 3                                                                                                                            Indicative upper bounds for capex and duration uplift across six project categories. Values unchanged since 2003.</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; 4                                                                                                                           Uplift on revenue raised through distortionary taxation. 20 percent in 2018 onwards (was 30 percent historically).</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; 5                                                                                                                       WELLBY central value GBP 13000 in 2019 prices (low/central/high range). Convert to other base years via gb_deflator().</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; 6                                                                                                           Anchor 2023 = GBP 2,474,341 (WTP component). Other years derived by 2 percent annual real GDP per head growth per TAG methodology.</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; 7                                                                                                                        GBP 70k per QALY in 2024 prices for cross-government appraisal. NICE thresholds GBP 20k-30k retained for HTA context.</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; 8                                                                                                 Single consolidated series (replacing historical traded / non-traded split). Low / central / high paths 2020-2050 in 2022 prices, GBP/tCO2e.</span></span></code></pre></div>
 </div>
 <div id="provenance-1" class="section level2">
 <h2>Provenance</h2>

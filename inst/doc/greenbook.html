@@ -345,9 +345,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="why-greenbook" class="section level2">
 <h2>Why greenbook</h2>
 <p><code>greenbook</code> provides cost-benefit analysis primitives from
-the HM Treasury Green Book. The v0.1.0 release covers the discounting
-MVP: kinked STPR, discount factors, NPV, equivalent annual cost, and
-GDP-deflator rebasing.</p>
+the HM Treasury Green Book: the kinked STPR, discount factors, NPV,
+equivalent annual cost, GDP-deflator rebasing, optimism bias,
+distributional weights and monetised valuation.</p>
 <p>All bundled parameter tables carry vintage metadata. Inspect
 with:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">gb_data_versions</span>()</span>
@@ -360,64 +360,75 @@ with:</p>
 <span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; 6           vpf</span></span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; 7          qaly</span></span>
 <span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; 8 carbon_values</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt;                                                                                                                              source</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; 1                                                         HM Treasury Green Book 2022 Annex A6 / supplementary discounting guidance</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 2 HM Treasury, GDP deflators at market prices (December 2025 Quarterly National Accounts release, calendar-year series, 2024 = 100)</span></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; 3                                                HM Treasury Supplementary Green Book Guidance: Optimism Bias (Mott MacDonald 2002)</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; 4          HM Treasury Green Book 2018 and 2022 (the 2026 edition specifies no uplift; see chapter 6 Costs of raising public funds)</span></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt; 5                                                                                  HMT Wellbeing Guidance for Appraisal (July 2021)</span></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; 6           DfT Transport Analysis Guidance (TAG) data book v2.03FC (December 2025), Table A4.1.1, WTP element for fatal casualties</span></span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt; 7                                                                      DHSC Supplementary Green Book Guidance + NICE HTA thresholds</span></span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#&gt; 8                          DESNZ Valuation of Energy Use and GHG Emissions for Appraisal (November 2023), Data Tables 1-19, Table 3</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                    source</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; 1 HM Treasury Green Book supplementary guidance: discounting (updated 28 October 2026), paragraph 3.8; pre-October 2026 schedule from the 2003 Green Book</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 2                                     HM Treasury, GDP deflators at market prices, and money GDP: October 2026 (Budget), calendar-year series, 2025 = 100</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; 3                                                                      HM Treasury Supplementary Green Book Guidance: Optimism Bias (Mott MacDonald 2002)</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; 4                                HM Treasury Green Book 2018 and 2022 (the 2026 edition specifies no uplift; see chapter 6 Costs of raising public funds)</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt; 5                                                                                                        HMT Wellbeing Guidance for Appraisal (July 2021)</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; 6                                 DfT Transport Analysis Guidance (TAG) data book v2.03FC (December 2025), Table A4.1.1, WTP element for fatal casualties</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt; 7                                                                                            DHSC Supplementary Green Book Guidance + NICE HTA thresholds</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#&gt; 8                                                DESNZ Valuation of Energy Use and GHG Emissions for Appraisal (November 2023), Data Tables 1-19, Table 3</span></span>
 <span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="co">#&gt;   last_updated</span></span>
-<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#&gt; 1   2026-04-26</span></span>
-<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#&gt; 2   2026-04-26</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#&gt; 1   2026-10-31</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#&gt; 2   2026-10-31</span></span>
 <span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="co">#&gt; 3   2026-04-26</span></span>
 <span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#&gt; 4   2026-04-26</span></span>
 <span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a><span class="co">#&gt; 5   2026-04-26</span></span>
 <span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a><span class="co">#&gt; 6   2026-04-26</span></span>
 <span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a><span class="co">#&gt; 7   2026-04-26</span></span>
 <span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a><span class="co">#&gt; 8   2026-04-26</span></span>
-<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                              notes</span></span>
-<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="co">#&gt; 1                          Kinked STPR: 3.5/3.0/2.5/2.0/1.5/1.0 percent across bands at 30/75/125/200/300 years. Health and catastrophic-risk variants per supplementary guidance.</span></span>
-<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="co">#&gt; 2 Outturn 1990-2024 from CGDP_Deflators_Qtrly_National_Accounts_December_2025_update.xlsx. Forecast years can be added via inflateR or the Spring Statement supplementary release.</span></span>
-<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="co">#&gt; 3                                                                Indicative upper bounds for capex and duration uplift across six project categories. Values unchanged since 2003.</span></span>
-<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="co">#&gt; 4                                                               Uplift on revenue raised through distortionary taxation. 20 percent in 2018 onwards (was 30 percent historically).</span></span>
-<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="co">#&gt; 5                                                           WELLBY central value GBP 13000 in 2019 prices (low/central/high range). Convert to other base years via gb_deflator().</span></span>
-<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="co">#&gt; 6                                               Anchor 2023 = GBP 2,474,341 (WTP component). Other years derived by 2 percent annual real GDP per head growth per TAG methodology.</span></span>
-<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a><span class="co">#&gt; 7                                                            GBP 70k per QALY in 2024 prices for cross-government appraisal. NICE thresholds GBP 20k-30k retained for HTA context.</span></span>
-<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a><span class="co">#&gt; 8                                     Single consolidated series (replacing historical traded / non-traded split). Low / central / high paths 2020-2050 in 2022 prices, GBP/tCO2e.</span></span></code></pre></div>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                                          notes</span></span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a><span class="co">#&gt; 1 Vintage 2026-10 (default): 3.00/2.50/2.25 percent for years 1-30/31-75/76-125, no discounting beyond year 125, no health or catastrophic variants. Vintage 2003: 3.5/3.0/2.5/2.0/1.5/1.0 percent with health and catastrophic-risk variants.</span></span>
+<span id="cb2-31"><a href="#cb2-31" tabindex="-1"></a><span class="co">#&gt; 2                                                                 Outturn 1990-2025 (ONS Quarterly National Accounts, 30 September 2026). Forecast 2026-2031 chained from OBR October 2026 EFO growth rates; type column marks forecast years.</span></span>
+<span id="cb2-32"><a href="#cb2-32" tabindex="-1"></a><span class="co">#&gt; 3                                                                                                                            Indicative upper bounds for capex and duration uplift across six project categories. Values unchanged since 2003.</span></span>
+<span id="cb2-33"><a href="#cb2-33" tabindex="-1"></a><span class="co">#&gt; 4                                                                                                                           Uplift on revenue raised through distortionary taxation. 20 percent in 2018 onwards (was 30 percent historically).</span></span>
+<span id="cb2-34"><a href="#cb2-34" tabindex="-1"></a><span class="co">#&gt; 5                                                                                                                       WELLBY central value GBP 13000 in 2019 prices (low/central/high range). Convert to other base years via gb_deflator().</span></span>
+<span id="cb2-35"><a href="#cb2-35" tabindex="-1"></a><span class="co">#&gt; 6                                                                                                           Anchor 2023 = GBP 2,474,341 (WTP component). Other years derived by 2 percent annual real GDP per head growth per TAG methodology.</span></span>
+<span id="cb2-36"><a href="#cb2-36" tabindex="-1"></a><span class="co">#&gt; 7                                                                                                                        GBP 70k per QALY in 2024 prices for cross-government appraisal. NICE thresholds GBP 20k-30k retained for HTA context.</span></span>
+<span id="cb2-37"><a href="#cb2-37" tabindex="-1"></a><span class="co">#&gt; 8                                                                                                 Single consolidated series (replacing historical traded / non-traded split). Low / central / high paths 2020-2050 in 2022 prices, GBP/tCO2e.</span></span></code></pre></div>
 </div>
 <div id="the-kinked-stpr" class="section level2">
 <h2>The kinked STPR</h2>
-<p>The Green Book Social Time Preference Rate steps down at 30, 75, 125,
-200, and 300 years. <code>gb_stpr()</code> returns the rate for any
-year:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">gb_stpr</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">75</span>, <span class="dv">76</span>, <span class="dv">200</span>, <span class="dv">300</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.035 0.035 0.030 0.030 0.025 0.020 0.015</span></span></code></pre></div>
-<p>Three variants are supported:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">gb_schedule_table</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt;   year_from year_to standard health catastrophic</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; 1         0      30    0.035 0.0150       0.0300</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; 2        31      75    0.030 0.0129       0.0257</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; 3        76     125    0.025 0.0107       0.0214</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; 4       126     200    0.020 0.0086       0.0171</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; 5       201     300    0.015 0.0064       0.0129</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 6       301    1000    0.010 0.0043       0.0086</span></span></code></pre></div>
+<p>The Green Book Social Time Preference Rate is 3.00 percent for years
+1 to 30, 2.50 percent for years 31 to 75 and 2.25 percent for years 76
+to 125, following HM Treasury’s update of 28 October 2026.
+<code>gb_stpr()</code> returns the rate for any year:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">gb_stpr</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">75</span>, <span class="dv">76</span>, <span class="dv">125</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.0300 0.0300 0.0250 0.0250 0.0225 0.0225</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">gb_schedule_table</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt;   year_from year_to standard health catastrophic</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; 1         0      30   0.0300     NA           NA</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; 2        31      75   0.0250     NA           NA</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; 3        76     125   0.0225     NA           NA</span></span></code></pre></div>
+<p>HM Treasury advises against discounting beyond year 125, so the
+default schedule stops there. The schedule in force before October 2026,
+with its health and catastrophic-risk variants, is available as
+<code>vintage = &quot;2003&quot;</code> for reproducing earlier appraisals:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">gb_stpr</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">75</span>, <span class="dv">76</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="at">vintage =</span> <span class="st">&quot;2003&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.035 0.035 0.030 0.030 0.025 0.020 0.015</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">gb_schedule_table</span>(<span class="at">vintage =</span> <span class="st">&quot;2003&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;   year_from year_to standard health catastrophic</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; 1         0      30    0.035 0.0150       0.0300</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; 2        31      75    0.030 0.0129       0.0257</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; 3        76     125    0.025 0.0107       0.0214</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 4       126     200    0.020 0.0086       0.0171</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 5       201     300    0.015 0.0064       0.0129</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 6       301    1000    0.010 0.0043       0.0086</span></span></code></pre></div>
 </div>
 <div id="discount-factors" class="section level2">
 <h2>Discount factors</h2>
 <p><code>gb_discount_factor()</code> applies the kinked schedule
 annually using <code>prod(1 + r_t)</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">gb_discount_factor</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; [1] 1.0000000 0.9661836 0.9335107 0.9019427 0.8714422 0.8419732</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; [1] 1.0000000 0.9708738 0.9425959 0.9151417 0.8884870 0.8626088</span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">gb_discount_factor</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">75</span>, <span class="dv">76</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; [1] 1.00000000 0.35627841 0.34590137 0.09421377 0.09191588</span></span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; [1] 1.0000000 0.4119868 0.4019383 0.1356155 0.1326313</span></span></code></pre></div>
 <p>The kink is correctly handled across band boundaries:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df_30 <span class="ot">&lt;-</span> <span class="fu">gb_discount_factor</span>(<span class="dv">30</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>df_31 <span class="ot">&lt;-</span> <span class="fu">gb_discount_factor</span>(<span class="dv">31</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>df_31 <span class="sc">/</span> df_30  <span class="co"># 1 / 1.030 = 0.9709, the year-31 single-period factor</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; [1] 0.9708738</span></span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>df_31 <span class="sc">/</span> df_30  <span class="co"># 1 / 1.025 = 0.9756, the year-31 single-period factor</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; [1] 0.9756098</span></span></code></pre></div>
 </div>
 <div id="net-present-value" class="section level2">
 <h2>Net present value</h2>
@@ -429,20 +440,20 @@ GBP 30 from year 1 to year 9.</p>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>appraisal</span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; ── Green Book appraisal ────────────────────────────────────────────────────────</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP 128.2&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; NPV (real, standard schedule): &quot;GBP 133.6&quot;</span></span>
 <span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; Horizon: 10 years (year 0 to 9)</span></span>
 <span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; Base year: 2024</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2022&quot;</span></span></code></pre></div>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Vintage: Green Book &quot;2026-10&quot;</span></span></code></pre></div>
 <p>The result is a <code>gb_appraisal</code> object with full
 provenance. Use <code>summary()</code> for a more detailed view:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">summary</span>(appraisal)</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; Green Book appraisal</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; --------------------</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; NPV          : GBP 128.2</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; NPV          : GBP 133.6</span></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; Schedule     : standard</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; Horizon      : 10 years (year 0 to 9)</span></span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; Base year    : 2024</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; Vintage      : Green Book 2022</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; Vintage      : Green Book 2026-10</span></span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; Total inflow : GBP 270.0</span></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; Total outflow: GBP -100.0</span></span></code></pre></div>
 </div>
@@ -450,7 +461,7 @@ provenance. Use <code>summary()</code> for a more detailed view:</p>
 <h2>Equivalent annual net cost</h2>
 <p>To compare options of different durations, annualise the NPV:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">gb_eanc</span>(appraisal)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt; [1] 16.8554</span></span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt; [1] 17.15661</span></span></code></pre></div>
 </div>
 <div id="real-terms-rebasing" class="section level2">
 <h2>Real-terms rebasing</h2>
@@ -459,14 +470,14 @@ prices to real values at a chosen base year:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">gb_real</span>(<span class="at">nominal_values =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">110</span>, <span class="dv">120</span>),</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>        <span class="at">year =</span> <span class="dv">2020</span><span class="sc">:</span><span class="dv">2022</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>        <span class="at">base_year =</span> <span class="dv">2024</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt; [1] 117.352 128.451 132.596</span></span></code></pre></div>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt; [1] 117.4778 128.4301 132.4863</span></span></code></pre></div>
 <p><code>gb_rebase()</code> does the same operation between two
 real-terms base years:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">gb_rebase</span>(<span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>), <span class="at">from =</span> <span class="dv">2020</span>, <span class="at">to =</span> <span class="dv">2024</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#&gt; [1] 117.3520 234.7040 352.0561</span></span></code></pre></div>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#&gt; [1] 117.4778 234.9555 352.4333</span></span></code></pre></div>
 <p><code>gb_deflator()</code> exposes the underlying factor:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">gb_deflator</span>(<span class="at">from =</span> <span class="dv">2020</span>, <span class="at">to =</span> <span class="dv">2024</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt; [1] 1.17352</span></span></code></pre></div>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt; [1] 1.174778</span></span></code></pre></div>
 </div>
 <div id="whats-next" class="section level2">
 <h2>What’s next</h2>
